@@ -1,4 +1,7 @@
 import { deleteAllTasksForUser } from './taskService';
+import { deleteAllEventsForUser } from './eventService';
+import { deleteAllNotificationsForUser } from './notificationService';
+
 
 export interface User {
     username: string;
@@ -155,6 +158,8 @@ export const deleteUser = async (currentUser: User, usernameToDelete: string): P
         delete users[usernameToDelete.toLowerCase()];
         saveUsers(users);
         deleteAllTasksForUser(usernameToDelete); // Also delete user's tasks
+        deleteAllEventsForUser(usernameToDelete);
+        deleteAllNotificationsForUser(usernameToDelete);
         resolve();
     });
 };

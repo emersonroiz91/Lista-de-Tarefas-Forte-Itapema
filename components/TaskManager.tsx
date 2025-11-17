@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { getTasks, addTask, updateTask, deleteTask } from '../services/taskService';
 import { Task, DayOfWeek } from '../types';
@@ -8,6 +7,7 @@ import TaskForm from './TaskForm';
 import DayColumn from './DayColumn';
 import Spinner from './Spinner';
 import { User } from '../services/authService';
+import CalendarView from './CalendarView';
 
 interface TaskManagerProps {
     user: User;
@@ -16,26 +16,31 @@ interface TaskManagerProps {
     onOpenChangePassword: () => void;
 }
 
+type TaskManagerView = 'tasks' | 'calendar';
+
 const TaskManager: React.FC<TaskManagerProps> = ({ user, onLogout, onNavigateToAdmin, onOpenChangePassword }) => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [view, setView] = useState<TaskManagerView>('tasks');
 
     useEffect(() => {
-        setLoading(true);
-        setError(null);
-        getTasks(user.username)
-            .then(initialTasks => {
-                setTasks(initialTasks);
-            })
-            .catch(err => {
-                 console.error(err);
-                 setError('Falha ao carregar tarefas.');
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, [user.username]);
+        if (view === 'tasks') {
+            setLoading(true);
+            setError(null);
+            getTasks(user.username)
+                .then(initialTasks => {
+                    setTasks(initialTasks);
+                })
+                .catch(err => {
+                     console.error(err);
+                     setError('Falha ao carregar tarefas.');
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        }
+    }, [user.username, view]);
 
     const handleAddTask = useCallback(async (text: string, day: DayOfWeek) => {
         try {
@@ -113,28 +118,63 @@ const TaskManager: React.FC<TaskManagerProps> = ({ user, onLogout, onNavigateToA
                 onNavigateToAdmin={onNavigateToAdmin}
                 onOpenChangePassword={onOpenChangePassword}
             />
-            <TaskForm onAddTask={handleAddTask} disabled={loading} />
+
+            <div className="mb-6 border-b border-gray-200">
+                <nav className="-mb-px flex space-x-6" aria-label="Tabs">
+                    <button
+                        onClick={() => setView('tasks')}
+                        className={`${
+                            view === 'tasks'
+                                ? 'border-blue-500 text-blue-600'
+                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                        } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150 focus:outline-none`}
+                        aria-current={view === 'tasks' ? 'page' : undefined}
+                    >
+                        Tarefas da Semana
+                    </button>
+                    <button
+                        onClick={() => setView('calendar')}
+                        className={`${
+                            view === 'calendar'
+                                ? 'border-blue-500 text-blue-600'
+                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                        } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-150 focus:outline-none`}
+                        aria-current={view === 'calendar' ? 'page' : undefined}
+                    >
+                        Calendário e Eventos
+                    </button>
+                </nav>
+            </div>
 
             {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-            <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {loading ? (
-                    <div className="md:col-span-2 lg:col-span-3">
-                        <Spinner />
-                    </div>
-                ) : (
-                    DAYS_OF_WEEK.map(({ key, label }) => (
-                        <DayColumn
-                            key={key}
-                            title={label}
-                            tasks={tasksByDay[key]}
-                            onToggleTask={handleToggleTask}
-                            onDeleteTask={handleDeleteTask}
-                            onUpdateTaskText={handleUpdateTaskText}
-                        />
-                    ))
-                )}
-            </main>
+            {view === 'tasks' && (
+                <>
+                    <TaskForm onAddTask={handleAddTask} disabled={loading} />
+                    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {loading ? (
+                            <div className="md:col-span-2 lg:col-span-3">
+                                <Spinner />
+                            </div>
+                        ) : (
+                            DAYS_OF_WEEK.map(({ key, label }) => (
+                                <DayColumn
+                                    key={key}
+                                    title={label}
+                                    tasks={tasksByDay[key]}
+                                    onToggleTask={handleToggleTask}
+                                    onDeleteTask={handleDeleteTask}
+                                    onUpdateTaskText={handleUpdateTaskText}
+                                />
+                            ))
+                        )}
+                    </main>
+                </>
+            )}
+
+            {view === 'calendar' && (
+                <CalendarView user={user} />
+            )}
         </div>
     );
 };

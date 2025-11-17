@@ -1,5 +1,6 @@
 import React from 'react';
 import { User } from '../services/authService';
+import NotificationsBell from './NotificationsBell';
 
 interface HeaderProps {
     user: User;
@@ -26,7 +27,8 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onNavigateToAdmin, onOp
                     </div>
                 </div>
                 {user && onLogout && (
-                    <div className="flex flex-col sm:flex-row items-center gap-3">
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <NotificationsBell user={user} />
                         <span className="text-gray-600">Olá, <span className="font-bold">{user.username}</span>!</span>
                         <div className="flex items-center gap-3">
                             {user.isAdmin && onNavigateToAdmin && (
