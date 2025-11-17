@@ -97,16 +97,30 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete, onEdit })
 
     return (
         <li className={`flex items-center p-3 bg-white rounded-xl shadow-sm border transition-all duration-300 ease-in-out ${completedClass}`}>
-            <input 
-                type="checkbox" 
-                checked={task.completed}
-                onChange={handleToggle}
-                id={`check-${task.id}`}
-                className="h-5 w-5 text-green-600 border-gray-300 rounded-md focus:ring-green-500 cursor-pointer flex-shrink-0"
-            />
-            <span className={`flex-grow ml-3 break-words pr-3 ${textClass}`} title={task.text}>
-                {task.text}
-            </span>
+            <label htmlFor={`check-${task.id}`} className="flex items-center flex-grow cursor-pointer group">
+                <div className="relative flex-shrink-0 w-5 h-5">
+                    <input 
+                        type="checkbox" 
+                        checked={task.completed}
+                        onChange={handleToggle}
+                        id={`check-${task.id}`}
+                        className="sr-only peer"
+                    />
+                    <div className="w-full h-full bg-white border-2 border-gray-300 rounded-md peer-checked:bg-green-600 peer-checked:border-green-600 group-hover:border-gray-400 transition-colors duration-200"></div>
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className="h-4 w-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white hidden peer-checked:block pointer-events-none" 
+                        viewBox="0 0 20 20" 
+                        fill="currentColor"
+                    >
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                </div>
+                <span className={`ml-3 break-words pr-3 ${textClass}`} title={task.text}>
+                    {task.text}
+                </span>
+            </label>
+
             <div className="flex items-center">
                 <button 
                     onClick={handleEdit}
