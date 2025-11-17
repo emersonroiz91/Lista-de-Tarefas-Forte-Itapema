@@ -106,7 +106,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete, onEdit })
                         id={`check-${task.id}`}
                         className="sr-only peer"
                     />
-                    <div className="w-full h-full bg-white border-2 border-gray-300 rounded-md peer-checked:bg-green-600 peer-checked:border-green-600 group-hover:border-gray-400 transition-colors duration-200"></div>
+                    <div className="w-full h-full bg-white border-2 border-gray-300 rounded-md peer-checked:bg-green-600 peer-checked:border-green-600 group-hover:border-gray-400 transition-colors duration-200 shadow-md"></div>
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         className="h-4 w-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white hidden peer-checked:block pointer-events-none" 
