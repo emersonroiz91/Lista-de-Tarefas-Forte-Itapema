@@ -8,9 +8,10 @@ interface DayColumnProps {
     tasks: Task[];
     onToggleTask: (id: string, completed: boolean) => void;
     onDeleteTask: (id: string) => void;
+    onUpdateTaskText: (id: string, newText: string) => void;
 }
 
-const DayColumn: React.FC<DayColumnProps> = ({ title, tasks, onToggleTask, onDeleteTask }) => {
+const DayColumn: React.FC<DayColumnProps> = ({ title, tasks, onToggleTask, onDeleteTask, onUpdateTaskText }) => {
     return (
         <div className="day-column bg-gray-50 p-4 rounded-lg shadow-inner border">
             <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">{title}</h2>
@@ -22,6 +23,7 @@ const DayColumn: React.FC<DayColumnProps> = ({ title, tasks, onToggleTask, onDel
                             task={task}
                             onToggle={onToggleTask}
                             onDelete={onDeleteTask}
+                            onEdit={onUpdateTaskText}
                         />
                     ))
                 ) : (

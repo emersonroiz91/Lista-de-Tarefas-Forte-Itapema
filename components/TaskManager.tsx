@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { getTasks, addTask, updateTask, deleteTask } from '../services/taskService';
 import { Task, DayOfWeek } from '../types';
@@ -66,6 +67,16 @@ const TaskManager: React.FC<TaskManagerProps> = ({ user, onLogout, onNavigateToA
         }
     }, [user.username]);
 
+    const handleUpdateTaskText = useCallback(async (id: string, newText: string) => {
+        try {
+            const updatedTasks = await updateTask(user.username, id, { text: newText });
+            setTasks(updatedTasks);
+        } catch (error) {
+            console.error("Erro ao atualizar o texto da tarefa:", error);
+            setError("Não foi possível atualizar o texto da tarefa.");
+        }
+    }, [user.username]);
+
     const tasksByDay = useMemo(() => {
         const groupedTasks: { [key in DayOfWeek]: Task[] } = {
             segunda: [],
@@ -119,6 +130,7 @@ const TaskManager: React.FC<TaskManagerProps> = ({ user, onLogout, onNavigateToA
                             tasks={tasksByDay[key]}
                             onToggleTask={handleToggleTask}
                             onDeleteTask={handleDeleteTask}
+                            onUpdateTaskText={handleUpdateTaskText}
                         />
                     ))
                 )}
