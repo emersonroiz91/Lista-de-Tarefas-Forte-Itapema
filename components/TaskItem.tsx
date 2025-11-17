@@ -102,7 +102,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete, onEdit })
                 checked={task.completed}
                 onChange={handleToggle}
                 id={`check-${task.id}`}
-                className="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500 cursor-pointer flex-shrink-0"
+                className="h-5 w-5 text-green-600 border-gray-300 rounded-md focus:ring-green-500 cursor-pointer flex-shrink-0"
             />
             <span className={`flex-grow ml-3 break-words pr-3 ${textClass}`} title={task.text}>
                 {task.text}
