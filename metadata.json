@@ -1,5 +1,5 @@
 {
   "name": "Forte Itapema Task Manager",
-  "description": "A simple and visually appealing task management application to organize your week, built with React and Firebase. It allows users to add, complete, and delete tasks for each day from Monday to Saturday with real-time updates.",
+  "description": "A multi-user task management application to organize your week. It allows users to sign up, log in, and manage their own private set of tasks for each day from Monday to Saturday. Data is stored locally in the browser.",
   "requestFramePermissions": []
 }
