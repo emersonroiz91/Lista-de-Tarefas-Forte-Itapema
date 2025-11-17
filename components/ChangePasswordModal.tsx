@@ -48,7 +48,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ user, onClose
             onClick={onClose}
         >
             <div 
-                className="bg-white rounded-xl shadow-2xl p-8 m-4 w-full max-w-md relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale"
+                className="bg-white rounded-2xl shadow-2xl p-8 m-4 w-full max-w-md relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale"
                 onClick={(e) => e.stopPropagation()}
                 style={{animation: 'fade-in-scale 0.3s forwards'}}
             >
@@ -63,8 +63,8 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ user, onClose
                 </button>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Alterar Senha</h2>
                 
-                {error && <p className="text-red-600 text-sm text-center mb-4 p-3 bg-red-100 rounded-lg">{error}</p>}
-                {success && <p className="text-green-600 text-sm text-center mb-4 p-3 bg-green-100 rounded-lg">{success}</p>}
+                {error && <p className="text-red-600 text-sm text-center mb-4 p-3 bg-red-100 rounded-xl">{error}</p>}
+                {success && <p className="text-green-600 text-sm text-center mb-4 p-3 bg-green-100 rounded-xl">{success}</p>}
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
@@ -75,7 +75,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ user, onClose
                             value={currentPassword}
                             onChange={(e) => setCurrentPassword(e.target.value)}
                             placeholder="••••••••"
-                            className="w-full p-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+                            className="w-full p-3 bg-white border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 text-gray-900"
                             required
                             disabled={loading}
                         />
@@ -88,7 +88,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ user, onClose
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
                             placeholder="••••••••"
-                            className="w-full p-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+                            className="w-full p-3 bg-white border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 text-gray-900"
                             required
                             disabled={loading}
                         />
@@ -101,14 +101,14 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ user, onClose
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="••••••••"
-                            className="w-full p-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+                            className="w-full p-3 bg-white border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 text-gray-900"
                             required
                             disabled={loading}
                         />
                     </div>
                     <button 
                         type="submit" 
-                        className="w-full px-5 py-3 mt-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-150 shadow-md active:bg-blue-800 disabled:bg-blue-300 disabled:cursor-not-allowed"
+                        className="w-full px-5 py-3 mt-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition duration-150 shadow-md active:bg-blue-800 disabled:bg-blue-300 disabled:cursor-not-allowed"
                         disabled={loading || success !== null}
                     >
                         {loading ? 'Salvando...' : 'Salvar Alterações'}

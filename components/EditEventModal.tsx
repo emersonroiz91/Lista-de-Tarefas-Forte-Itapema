@@ -40,7 +40,7 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ event, onSave, onClose,
             onClick={onClose}
         >
             <div 
-                className="bg-white rounded-xl shadow-2xl p-8 m-4 w-full max-w-md relative"
+                className="bg-white rounded-2xl shadow-2xl p-8 m-4 w-full max-w-md relative"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button 
@@ -63,7 +63,7 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ event, onSave, onClose,
                             value={title} 
                             onChange={e => setTitle(e.target.value)} 
                             placeholder="Título do Evento" 
-                            className="w-full p-2 border border-gray-300 rounded-lg" 
+                            className="w-full p-2 border border-gray-300 rounded-xl" 
                             required 
                         />
                     </div>
@@ -74,13 +74,13 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ event, onSave, onClose,
                             type="time" 
                             value={time} 
                             onChange={e => setTime(e.target.value)} 
-                            className="w-full p-2 border border-gray-300 rounded-lg" 
+                            className="w-full p-2 border border-gray-300 rounded-xl" 
                         />
                     </div>
                     <div className="pt-2">
                         <button 
                             type="submit" 
-                            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-150 disabled:bg-blue-300"
+                            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition duration-150 disabled:bg-blue-300"
                             disabled={loading}
                         >
                             {loading ? 'Salvando...' : 'Salvar Alterações'}
@@ -88,7 +88,7 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ event, onSave, onClose,
                         <button 
                             type="button"
                             onClick={handleDelete}
-                            className="w-full py-2 mt-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-150 disabled:bg-red-300"
+                            className="w-full py-2 mt-3 bg-red-500 text-white font-semibold rounded-xl hover:bg-red-600 transition duration-150 disabled:bg-red-300"
                             disabled={loading}
                         >
                             Excluir Evento

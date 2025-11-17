@@ -34,20 +34,20 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onNavigateToAdmin, onOp
                             {user.isAdmin && onNavigateToAdmin && (
                                  <button 
                                     onClick={onNavigateToAdmin}
-                                    className="px-4 py-2 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-150 shadow-sm active:bg-gray-900"
+                                    className="px-4 py-2 bg-gray-700 text-white font-semibold rounded-xl hover:bg-gray-800 transition duration-150 shadow-sm active:bg-gray-900"
                                 >
                                     Painel Admin
                                 </button>
                             )}
                             <button
                                 onClick={onOpenChangePassword}
-                                className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition duration-150 shadow-sm active:bg-yellow-700"
+                                className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition duration-150 shadow-sm active:bg-yellow-700"
                             >
                                 Alterar Senha
                             </button>
                             <button 
                                 onClick={onLogout}
-                                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-150 shadow-sm active:bg-red-700"
+                                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-xl hover:bg-red-600 transition duration-150 shadow-sm active:bg-red-700"
                             >
                                 Sair
                             </button>

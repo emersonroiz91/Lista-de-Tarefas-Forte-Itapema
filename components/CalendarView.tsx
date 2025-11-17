@@ -154,11 +154,11 @@ const CalendarView: React.FC<CalendarViewProps> = ({ user }) => {
                 </div>
 
                 {/* Events & Form */}
-                <div className="w-full md:w-1/3 bg-gray-50 p-4 rounded-lg border">
+                <div className="w-full md:w-1/3 bg-gray-50 p-4 rounded-xl border">
                     <h3 className="font-bold text-lg mb-3 text-gray-800">Eventos para {new Date(selectedDate + 'T00:00:00').toLocaleDateString('pt-BR')}</h3>
                     <div className="space-y-2 mb-4 min-h-[80px]">
                         {eventsByDate[selectedDate] ? eventsByDate[selectedDate].sort((a,b) => (a.time || '').localeCompare(b.time || '')).map(event => (
-                            <div key={event.id} className="bg-white p-2 rounded shadow-sm border flex justify-between items-center">
+                            <div key={event.id} className="bg-white p-2 rounded-lg shadow-sm border flex justify-between items-center">
                                 <div>
                                     <p className="font-semibold text-gray-800">{event.title}</p>
                                     <p className="text-sm text-gray-500">{event.time}</p>
@@ -182,12 +182,12 @@ const CalendarView: React.FC<CalendarViewProps> = ({ user }) => {
                     <form onSubmit={handleAddEvent} className="space-y-3 border-t pt-4">
                          <h4 className="font-semibold text-gray-800">Adicionar Novo Evento</h4>
                          <div>
-                            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Título do Evento" className="w-full p-2 border border-gray-300 rounded-lg" required />
+                            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Título do Evento" className="w-full p-2 border border-gray-300 rounded-xl" required />
                          </div>
                          <div>
-                            <input type="time" value={time} onChange={e => setTime(e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg" />
+                            <input type="time" value={time} onChange={e => setTime(e.target.value)} className="w-full p-2 border border-gray-300 rounded-xl" />
                          </div>
-                         <button type="submit" className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">Adicionar</button>
+                         <button type="submit" className="w-full py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700">Adicionar</button>
                     </form>
                 </div>
             </div>

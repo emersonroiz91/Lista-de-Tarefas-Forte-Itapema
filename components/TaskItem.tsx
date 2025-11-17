@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Task } from '../types';
 
@@ -64,7 +63,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete, onEdit })
 
     if (isEditing) {
         return (
-            <li className={`flex items-center p-3 bg-white rounded-lg shadow-sm border border-blue-500 ring-2 ring-blue-200`}>
+            <li className={`flex items-center p-3 bg-white rounded-xl shadow-sm border border-blue-500 ring-2 ring-blue-200`}>
                 <input 
                     ref={inputRef}
                     type="text" 
@@ -97,7 +96,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete, onEdit })
     }
 
     return (
-        <li className={`flex items-center p-3 bg-white rounded-lg shadow-sm border transition-all duration-300 ease-in-out ${completedClass}`}>
+        <li className={`flex items-center p-3 bg-white rounded-xl shadow-sm border transition-all duration-300 ease-in-out ${completedClass}`}>
             <input 
                 type="checkbox" 
                 checked={task.completed}

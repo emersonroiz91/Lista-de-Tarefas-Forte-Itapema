@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Task } from '../types';
 import TaskItem from './TaskItem';
@@ -13,7 +12,7 @@ interface DayColumnProps {
 
 const DayColumn: React.FC<DayColumnProps> = ({ title, tasks, onToggleTask, onDeleteTask, onUpdateTaskText }) => {
     return (
-        <div className="day-column bg-gray-50 p-4 rounded-lg shadow-inner border">
+        <div className="day-column bg-gray-50 p-4 rounded-xl shadow-inner border">
             <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">{title}</h2>
             <ul className="space-y-3 min-h-[50px]">
                 {tasks.length > 0 ? (

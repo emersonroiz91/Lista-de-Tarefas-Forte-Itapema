@@ -62,7 +62,7 @@ const NotificationsBell: React.FC<NotificationsBellProps> = ({ user }) => {
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border z-20">
+                <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border z-20">
                     <div className="p-3 flex justify-between items-center border-b">
                         <h3 className="font-semibold text-gray-800">Notificações</h3>
                         {notifications.length > 0 && (

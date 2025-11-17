@@ -61,7 +61,7 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }) => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="seu.usuario"
-                        className="w-full p-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+                        className="w-full p-3 bg-white border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 text-gray-900"
                         required
                         disabled={loading}
                     />
@@ -74,7 +74,7 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="w-full p-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+                        className="w-full p-3 bg-white border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 text-gray-900"
                         required
                         disabled={loading}
                     />
@@ -82,7 +82,7 @@ const Auth: React.FC<AuthProps> = ({ onLoginSuccess }) => {
                 {error && <p className="text-red-500 text-center text-sm mb-4">{error}</p>}
                 <button 
                     type="submit" 
-                    className="w-full px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-150 shadow-md active:bg-blue-800 disabled:bg-blue-300 disabled:cursor-not-allowed"
+                    className="w-full px-5 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition duration-150 shadow-md active:bg-blue-800 disabled:bg-blue-300 disabled:cursor-not-allowed"
                     disabled={loading || !username || !password}
                 >
                     {loading ? 'Carregando...' : (isLogin ? 'Entrar' : 'Cadastrar')}

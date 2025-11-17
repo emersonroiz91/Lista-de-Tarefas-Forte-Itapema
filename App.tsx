@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
     return (
         <div className="p-4 md:p-8 min-h-screen flex items-center justify-center">
-            <div className="w-full max-w-6xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden relative">
+            <div className="w-full max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden relative">
                 {renderContent()}
                 {currentUser && isChangePasswordModalOpen && (
                     <ChangePasswordModal 

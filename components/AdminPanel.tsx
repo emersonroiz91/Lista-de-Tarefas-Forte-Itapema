@@ -59,25 +59,25 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ user, onNavigateToTasks, onOpen
                  <div className="flex items-center gap-3">
                     <button
                         onClick={onOpenChangePassword}
-                        className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition duration-150 shadow-sm active:bg-yellow-700"
+                        className="px-4 py-2 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition duration-150 shadow-sm active:bg-yellow-700"
                     >
                         Alterar Senha
                     </button>
                     <button
                         onClick={onNavigateToTasks}
-                        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-150 shadow-sm active:bg-blue-800"
+                        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition duration-150 shadow-sm active:bg-blue-800"
                     >
                         Voltar para Tarefas
                     </button>
                 </div>
             </header>
 
-            {error && <p className="text-red-500 text-center mb-4 p-3 bg-red-50 rounded-lg">{error}</p>}
+            {error && <p className="text-red-500 text-center mb-4 p-3 bg-red-50 rounded-xl">{error}</p>}
 
             {loading ? (
                 <Spinner />
             ) : (
-                <div className="overflow-x-auto bg-white rounded-lg shadow border">
+                <div className="overflow-x-auto bg-white rounded-xl shadow border">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
